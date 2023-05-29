@@ -1,19 +1,21 @@
 import React, {useState} from "react";
-import {Button} from 'antd'
-import PKModal from "./components/Modal";
-
+import PKModal from "./components/Modal"
+import PKTabs from './components/Tabs';
+import PKButton from "./components/Button";
 
 const App = ()=> {
     const [status, setStatus] = useState(false)
 
-    const closeModal = ()=> setStatus(false)
     const openModal = ()=> setStatus(true)
+    const closeModal = ()=> setStatus(false)
 
     return (
         <>
-            <h1>Hedding</h1>
-            <Button onClick={openModal}>open</Button>
-            <PKModal visible={status} cls={closeModal} />
+            <PKButton type="primary" click={openModal}>open</PKButton>
+            <PKTabs />
+            <PKModal visible={status} close={closeModal}>
+                <p>Default activate first tab.</p>
+            </PKModal>
             {console.log(status)}
         </>
     )
